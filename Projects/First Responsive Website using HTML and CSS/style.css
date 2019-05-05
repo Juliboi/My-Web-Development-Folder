@@ -1,0 +1,552 @@
+   /*
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com
+Twitter: @rich_clark
+*/
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+body {
+    line-height:1;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+    display:block;
+}
+
+nav ul {
+    list-style:none;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000;
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0;
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+    vertical-align:middle;
+}
+
+/*MY CODE*/
+
+
+
+
+/*MOBILE FORMAT*/
+
+/*              Tip: If you don't want to always put the color again
+ * p{
+color: #111;
+}
+*/
+
+* {                         /*styles everything*/
+  text-decoration: none;    /*deletes all the underlines, etc*/
+}
+
+
+body {                       /* the middle part where the most of the content is*/
+  /*background-color: f3f3f3;  (gray)   only in the beginning to see the white navigation + you wouldnt see the link boxes because they are gray*/
+}
+
+main {                       /*everything except the navigation menu*/
+  padding-top: 100px;        /*space because of the menu navigation box*/
+}
+
+header {                   /*navigation menu or header*/
+  background-color: #fff;  /*white*/
+  width: 100%;             /*allows 100% of the width*/
+  height: 100px;           /*sets the headers height to 100px*/
+  position: fixed;         /*navigation menu stays at top while scrolling*/
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+header .header-brand {         /* My name => Julian Xu*/
+  font-family: Catamaran;      /*font style*/
+  font-size: 24px;             /*text size*/
+  font-weight: 900;            /*text thickness*/
+  color: #111;                 /*not completely black, because it hurts your eyes*/
+  text-transform: uppercase;   /*turns all the words to CAPITAL letter*/
+  display: block;              /* text-align, margin and padding (verticaly wouldnt work) wouldnt work + for links its good to use display: block; because it will be easier to style afterwards*/
+  margin: 0 auto;              /*centers the header logo*/ /*WOULD WORK WITHOUT IT?*/
+  text-align: center;          /*centers the header logo*/
+  padding: 20px 0;  /*U,D - R,L*/    /*pushes out 20px of space from top and bottom and deletes space from right and left*/
+}
+
+header nav ul {              /*Portfolio, About me, Contact - together*/
+  display: block;            /*helps the with the margin centering*/
+  margin: 0 auto;            /*centers options, but wont work without display: block;*/
+  width: fit-content;        /*the options have their width set as 100% of the navigation, use fit-content for setting width automatically*/
+}
+
+header nav ul li {          /*Portfolio, About me, Contact - individual*/
+display: inline-block;      /*inline-block is for making words go from left to right able to style them*/
+float: left;                /*with inline-block there will be a small gap between the options so we use float to delete the gap*/
+list-style: none;           /*deletes all unnecessary styling of <li>*/
+padding: 0 16px;            /*adds spaces between words*/
+}
+
+header nav ul li a {          /*Portfolio, About me, Contanct - text styling*/
+  font-family: Catamaran;
+  font-size: 16px;
+  color: #111;
+}
+
+header .header-progress {
+  display: none;              /*censors the Progress button*/
+}
+
+
+/*DESKTOP FORMAT - NAVIGATION*/
+
+@media only screen and (min-width: 1000px) {
+  header .header-brand {     /* My name => Julian Xu*/
+    margin: 31px 0;          /*31px beacuse 38-100=62, 62:2=31*/ /*100px - header height*/ /*centers the Julian Xu*/
+    text-align: left;        /*just pushes the text to the left, it doesnt move other text*/
+    line-height: 38px;       /*space from top and makes the border longer*/
+    padding: 0 20px 0 40px;  /*deletes the excess height for the border, gives 20px on the right side and adds 40px on the left site*/
+    border-right: 3px solid #111;
+    float: left;             /*the link will be 100% of the containers width, we use float to fix the problem with the border being on the right side*/
+  }
+
+  header nav ul {              /*Portfolio, About me, Contact - together*/
+    float: left;
+    margin: 20px 0px 0px 20px;
+
+  }
+
+  header nav ul li {            /*Portfolio, About me, Contact - individualy*/
+
+  }
+
+  header nav ul li a {          /*Portfolio, About me, Contact text styling*/
+    font-size: 20px;
+    line-height: 60px;          /*pushes text down to make it centered*/
+  }
+
+  header .header-progress {        /*Progress*/
+    display: block;
+    font-family: Catamaran;
+    font-size: 20px;
+    color: #111;
+    line-height: 38px;          /*add space from top/pushes it down*/
+    border: 1px solid #111;     /*puts it in a box*/
+    float: right;
+    margin-right: 40px;         /*pushes it 40px, just like Julian Xu, from the right side*/
+    margin-top: 30px;           /*38(line height)+2(1px of border from top and bottom)-100 (navigation bar height):2= 30px*/ /*vertical centering*/
+    padding: 0 20px;            /*gives space inside the box*/
+  }
+}
+
+/*NAVIGATION DONE*/
+
+
+/*INDEX BANNER*/
+
+.index-banner {   /*the banner*/
+  width: 100%;
+  height: calc(100vh - 100px);  /*allows 100% of the view height, but subtracts  100px so the whole height is allowed except of the navigation*/
+  background-image: url('img/banners/banner.jpeg');  /*using a background image, so we can add text on it*/
+  background-repeat: no-repeat; /*cancels image multiplying*/
+  background-position: center;  /*centers the picture*/
+  background-size: cover;       /*the image covers the whole space*/
+  display: table;               /* works with .vertical-center to center the text. We can't use margin to push the text, because there are devices which have different vertical height for the display*/
+}
+
+.vertical-center {              /*for centering the background text VERTICALY*/
+display: table-cell;            /*works with .index-banner - display: table;*/
+vertical-align: middle;
+}
+
+.index-banner h2 {                /*I AM A FREELANCE WEB DEVELOPER*/
+  font-family: Catamaran;
+  font-size: 60px;
+  font-weight: 900;
+  color: #fff;    /*white*/
+  text-align: center;
+  text-shadow: 2px 2px 10px #111; /*left-down-opacity-color*/
+  line-height: 70px;              /*space between lines*/
+}
+
+.index-banner h1 {          /*My name is Julian Xu and I'm currently a self-taught freelance web developer in progress*/
+  font-family: Comorant-Garamond;
+  font-size: 28px;
+  font-weight: 100;
+  font-style: italic;
+  color: #fff;    /*white*/
+  text-align: center;
+  text-shadow: 2px 2px 10px #111;
+  line-height: 40px;
+}
+
+.index-links div {            /*THE 6 BOXES - Progress, Portfolio, Julian Xu, etc.*/
+margin: 16px 16px 0;          /*top-left+right-bottom  = preparing for desktop*/
+width: calc(100% - 32px);     /*100% of the width minus 16px from left and 16px from the right*/
+height: 100px;                /*100px of height that the content can move in*/
+background-color: #f2f2f2;    /*light gray*/
+}
+
+.index-links div h3 {          /*My name is Julian Xu and I'm currently a self-taught freelance web developer in progress*/
+  font-family: Catamaran;
+  font-size: 28px;
+  font-weight: 600;
+  color: #111;    /*white*/
+  text-align: center;
+  line-height: 100px;          /*because of the height of the .index-links div*/
+  text-transform: uppercase;
+}
+
+@media only screen and (min-width: 1000px) {
+
+  /*INDEX - BANNER*/
+
+  .wrapper {                    /*link boxes*/
+    width: 1000px;
+    margin: 0 auto;
+  }
+
+  .index-banner {               /*the banner*/
+
+  }
+
+  .index-banner h2 {                /*I AM A FREELANCE WEB DEVELOPER*/
+    font-size: 70px;
+    font-weight: 900;
+  }
+
+  .index-banner h1 {          /*My name is Julian Xu and I'm currently a self-taught freelance web developer in progress*/
+    font-size: 40px;
+    margin-top: 10px;
+  }
+
+  /*INDEX - BOX LINKS*/
+
+  .index-links {
+    overflow: hidden;        /*when something doesnt work (padding-bottom) and the section contains float, use overflow: hidden;*/ /*dont need to add padding-bottom beacuse its already added from the mobile version*/
+  }
+
+  .index-links div {            /*THE 6 BOXES - Progress, Portfolio, Julian Xu, etc. - individualy*/
+    margin: 20px 10px 0;        /*adding spaces around the boxes*/
+    height: 230px;              /*height of the boxes*/
+    background-color: #f2f2f2;
+    float: left;                /*pushes the boxes next to each other*/
+  }
+
+  .index-links div h3 {          /*text styling inside the link boxes*/
+    line-height: 230px;          /*vertical centering*/
+  }
+
+  .index-boxlink-square {
+    width: calc(25% - 20px) !important;      /*25% = 1/4 of the wrapper, 20px = 10px from left and right, !important; = prioritize this code, wouldnt work without it*/
+  }
+
+  /*after setting the width, it wont work because the .index-links div still have a width in the mobile version, you cant set it to 0 because it would dissapear. Use the !important tag to prioritize*/
+
+  .index-boxlink-rectangle {
+    width: calc(50% - 20px) !important;
+  }
+
+}
+
+/*GALLERY*/
+
+.gallery-links h2 {                 /*Gallery-h2*/
+  font-family: Catamaran;
+  font-size: 35px;
+  font-weight: 800;
+  color: #111;    /*black*/
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+
+.gallery-links .cases-link p {
+  font-family: Catamaran;
+  font-size: 25px;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+
+
+.gallery-links {
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.gallery-links .cases-link {
+  float: left;
+  width: 230px;                   /*230px beacuse => 1000px (wrapper) - 10px(a guess) (thats the margin on all four sites) x 8 (4x2) (right and left side of the box) : 4 (4 boxes) = 230px*/
+  height: 230px;
+  margin: 20px 10px 0;
+}
+
+/*GALLERY - BACKGROUND PHOTOS*/
+
+.photo1 {
+  background-image: url('img/gallery/photo1.jpg');  /*using a background image, so we can add text on it*/
+  background-repeat: no-repeat; /*cancels image multiplying*/
+  background-position: center;  /*centers the picture*/
+  background-size: cover;       /*the image covers the whole space*/
+  display: table;
+}
+
+.photo2 {
+  background-image: url('img/gallery/photo2.jpg');  /*using a background image, so we can add text on it*/
+  background-repeat: no-repeat; /*cancels image multiplying*/
+  background-position: center;  /*centers the picture*/
+  background-size: cover;       /*the image covers the whole space*/
+  display: table;
+}
+
+.photo3 {
+  background-image: url('img/gallery/photo3.jpg');  /*using a background image, so we can add text on it*/
+  background-repeat: no-repeat; /*cancels image multiplying*/
+  background-position: center;  /*centers the picture*/
+  background-size: cover;       /*the image covers the whole space*/
+  display: table;
+}
+
+.photo4 {
+  background-image: url('img/gallery/photo4.jpg');  /*using a background image, so we can add text on it*/
+  background-repeat: no-repeat; /*cancels image multiplying*/
+  background-position: center;  /*centers the picture*/
+  background-size: cover;       /*the image covers the whole space*/
+  display: table;
+}
+
+.photo5 {
+  background-image: url('img/gallery/photo5.jpg');  /*using a background image, so we can add text on it*/
+  background-repeat: no-repeat; /*cancels image multiplying*/
+  background-position: center right;  /*centers the picture*/
+  background-size: cover;       /*the image covers the whole space*/
+  display: table;
+}
+
+.photo6 {
+  background-image: url('img/gallery/photo6.jpg');  /*using a background image, so we can add text on it*/
+  background-repeat: no-repeat; /*cancels image multiplying*/
+  background-position: center;  /*centers the picture*/
+  background-size: cover;       /*the image covers the whole space*/
+  display: table;
+}
+
+.photo7 {
+  background-image: url('img/gallery/photo7.jpg');  /*using a background image, so we can add text on it*/
+  background-repeat: no-repeat; /*cancels image multiplying*/
+  background-position: center;  /*centers the picture*/
+  background-size: cover;       /*the image covers the whole space*/
+  display: table;
+}
+
+.photo8 {
+  background-image: url('img/gallery/photo8.jpg');  /*using a background image, so we can add text on it*/
+  background-repeat: no-repeat; /*cancels image multiplying*/
+  background-position: center;  /*centers the picture*/
+  background-size: cover;       /*the image covers the whole space*/
+  display: table;
+}
+
+.vertical-center {              /*for centering the background text*/
+display: table-cell;            /*works with .index-banner - display: table;*/
+vertical-align: middle;
+}
+
+/*PHOTOGRAPHY*/
+
+.photography-h2 {
+  font-family: Catamaran;
+  font-size: 35px;
+  font-weight: 800;
+  color: #111;    /*black*/
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+
+.photography-links {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: 15px 180px;
+}
+
+.photography-img {
+  flex-basis: 600px;
+  flex-grow: 1;
+  margin: 10px;
+}
+
+.photography-img img {
+  width: 100%;
+}
+
+/*FOOTER*/
+
+footer {
+  width: calc(100% - 80px);      /*40px from left and 40px from right*/
+  padding: 40px 40px;     /*top and bottom - right and left*/
+  /*not setting HEIGHT because we can use padding so it will always adapt no matter how much there is content*/
+  margin-top: 20px;
+  background-color: #111;
+  overflow: hidden;                  /*cant recognize because everything is floating, padding and margin wouldnt work,  */
+}
+
+/*IMPORTANT: If we have a box of content (footer) and we make them float either to the left or the right side, the website will have a hard time recognizing the content. FIX: go to footer{} (or any other box of contents) and use overflow: hidden;*/
+
+footer ul {    /*both footer menus - together*/
+  width: fit-content;          /*beacuse the second menu is not static (PROGRESS will be constantly changing in content and width), by using fit content it will always fit the contents width*/
+  float: left;                 /*pushes the options to the left side*/
+  padding-left: 8px;
+
+  /* without float = Home
+                     Progress
+                     Portfolio
+                     Current progress
+                     HTML - In progesss
+                     CSS  - In progress
+
+     float: left;  = Home          Current progress
+                     Progress      HTML  - In progress
+                     Portfolio     CSS - In progress
+  */
+
+}
+
+footer ul li {        /*both footer list items - individualy*/
+  display: block;     /*list item gets its own line*/
+  list-style: none;   /*deletes unwanted list styling*/
+  color: #fff;
+}
+
+footer ul a {                 /*footers menu text styling*/
+font-family: Catamaran;
+font-size: 24px;
+color: #fff;
+line-height: 32px;
+}
+
+.footer-links-progress {       /*Current progress, HTML - in progress, CSS...*/
+  display: none;               /*censors the progress menu*/
+}
+
+.footer-sm {
+  width: 50px;                /*size of the img (social media symbols)*/
+  float: right;
+}
+
+.footer-sm img {
+  width: 100%;            /*the img can move 100% of the width*/
+}
+
+@media only screen and (min-width: 1000px) {
+
+  .footer-sm {
+    line-height: 60px;
+    padding-top: 18px;
+    margin-top: 10px;
+  }
+
+  .footer-links-progress {       /*Current progress, HTML - in progress, CSS...*/
+    display: block;               /*censors the progress menu*/
+  }
+
+  footer {
+    padding: 15px 40px;          /*top and bottom - right and left*/
+    /*not setting HEIGHT because we can use padding so it will always adapt no matter how much there is content*/
+    margin-top: 20px;
+    background-color: #111;
+    overflow: hidden;                  /*cant recognize because everything is floating, padding and margin wouldnt work*/
+  }
+
+  footer ul {                  /*the whole content*/
+    border: 1px solid #fff;
+    padding: 0 10px;           /*padding gives more space from the inside*/
+    margin-right: 20px;        /*margin pushes the whole box with the content*/
+    margin-top: 25px;
+  }
+
+  footer ul li {               /*the text inside the box - Home, Portfolio, etc*/
+    font-family: Catamaran;
+    font-size: 24px;
+    line-height: 40px;
+  }
+}

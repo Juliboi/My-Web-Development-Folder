@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
+  <title>API type ahead</title>
+</head>
+<body>
+
+  <form class="search-form">
+    <input type="text" class="search" placeholder="City or State">
+    <ul class="suggestions">
+      <li>Filter for a city</li>
+      <li>or a state</li>
+    </ul>
+  </form>
+
+<script>
+//CONSTRUCTOR MAREK VYSVETLENI
+// function makePerson(){
+//  class Person{
+//     constructor(vaha){
+//       this.vaha = vaha;
+//             this.vaha = vaha;
+//     }
+//  }
+//
+//  return Person;s
+// }
+//
+// const Person = makePerson();
+//
+// const clovek1 = new Person(10);
+// const clovek2 = new Person(50);
+//
+// const clovek3 = new Person();
+// clovek3.vaha = 50;
+//
+// console.log(clovek3.vaha);
+//
+// console.log(clovek1.vaha);
+
+
+
+
+const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+
+const cities = [];
+
+// const prom = fetch(endpoint); //returns a promise not the data (promise = something will eventually come back)
+// console.log(prom)
+
+//fetch(endpoint).then(blob => console.log(blob)); //doesnt return all the items but returns a response (the fetch doesnt know what kind of data => you need to specify it)
+
+fetch(endpoint)
+          .then(blob => blob.json()) //specify the fata => inside the response there was a json() method
+          .then(data => cities.push(...data)) //data = array of objects of all the cities // .push = pushes the data into the cities => but it will add an array into an arry //...data = spreads
+
+function findMatches(wordToMatch, cities) { //cities = is not the const cities (all the data) => wordToMatch and cities are only a functions parameter for later value pass
+  return cities.filter(place => { //place = all the individual cities, places, population
+    //here we need to figure out if the city or state matches what was searched
+    const regex = new RegExp(wordToMatch, 'gi') //
+    return place.city.match(regex) || place.state.match(regex); //match any word written inside the input with the cities or states
+  });
+}
+
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+
+function displayMatches() {
+  //console.log(this.value); //shows whatever is written inside the input
+  const matchArray = findMatches(this.value, cities); //this.value = input.value =>passes the input.value into the function that finds the matches
+  //console.log(matchArray) //shows the cities when typed somethin inside the input
+  const html = matchArray.map(place => { //place is a parameter from the findMatches() function => reusing it
+    const regex = new RegExp(this.value, 'gi'); //a regexp that will set the input.value for later replacement
+    const cityName = place.city.replace(regex, `<span class="hl">${this.value}</span>`); //replacing the regexp input.valu with the span with a highligh class
+    const stateName = place.state.replace(regex, `<span class="hl">${this.value}</span>`);
+    return `
+      <li>
+        <span class="name">${cityName}, ${stateName}</span>
+        <span class="population">${numberWithCommas(place.population)}</span>
+      </li>
+    `; //using .map() method to change the individual objects into and HTML <li> tag with the values passed in
+  }).join(''); //makes a string out of the map array
+      console.log(html);
+  suggestions.innerHTML = html; //suggestion = <ul>, passing in the html variable
+}
+
+const searchInput = document.querySelector('.search') //input
+const suggestions = document.querySelector('.suggestions')
+
+searchInput.addEventListener('change', displayMatches)
+searchInput.addEventListener('keyup', displayMatches)
+
+</script>
+</body>
+</html>

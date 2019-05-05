@@ -1,0 +1,69 @@
+* {
+  Margin: 0;
+  Padding: 0;
+}
+
+Body {
+  Background-image: url(img/road.jpg);
+  background-size: cover;
+  background-position: top;
+}
+
+Nav {
+  Width: 100%;
+  Height: 60px;
+  Background-color: #fff;
+}
+
+Nav p {
+  Font-family: arial;
+  Color: #222;
+  Font-size: 24px;
+  Line-height: 55px;
+  Float: left;
+  Padding: 0 20px;
+}
+
+Nav ul {
+  Float: left;
+}
+
+Nav ul li {
+  Float: left;
+  List-style: none;
+  Position: relative;
+}
+
+Nav ul li a {
+  Display: block;
+  Font-family: arial;
+  Color: #222;
+  Font-size: 18px;
+  Padding: 18px 14px;
+  Text-decoration: none;
+}
+
+Nav ul li ul {
+  Display: none;
+  Position: absolute;
+  Background-color: #fff;
+  Padding: 10px;
+  Border-radius: 0px 0px 4px 4px;
+}
+
+Nav ul li:hover ul {
+  Display: block;
+}
+
+Nav ul li ul li {
+  Width: 180px;
+  border-radius: 4px;
+}
+
+Nav ul li ul li a {
+  Padding: 8px 14px;
+}
+
+Nav ul li ul li a:hover {
+  Background-color: #f3f3f3;
+}

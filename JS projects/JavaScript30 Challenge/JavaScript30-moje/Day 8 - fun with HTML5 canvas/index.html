@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>HTML5 canvas</title>
+</head>
+<body>
+  <canvas id="draw" width="" height=""></canvas>
+
+<script>
+  const canvas = document.querySelector('#draw')
+  //console.log(canvas)
+  const ctx = canvas.getContext('2d') //needs to know in which dimension we are drawing 2D or 3D => this is where we do all the drawings
+
+  canvas.width = window.innerWidth //spreading the canvas through the whole window screen
+  canvas.height = window.innerHeight // -||-
+
+  ctx.strokeStyle = '#BADA55'; //giving the stroke a color
+  ctx.lineJoin = 'round'; //giving it the rounded style, you can choose different like squared
+  ctx.lineCap = 'round'; //giving it the rounded style finish at the end of the stroke
+  ctx.lineWidth = 100; //stroke thickness
+  ctx.globalCompositeOperation = 'multiply';
+
+  let isDrawing = false; //a flag so that when we let go of the click it stops drawing (false)
+  let lastX = 0; //where do we start the line and where do we end the line on the X line
+  let lastY = 0; //where do we start the line and where do we end the line on the Y line
+  let hue = 0;
+  let direction = true;
+
+
+  function draw(e) {
+    if(!isDrawing) return; //if isDrawing is false then evaluate the code => return nothing)
+    //console.log(e) //TRUE so you should be able to draw
+    ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`; //(hsl with the color of the variable hue, 100%saturation, 50% lightness)
+    //ctx.lineWidth = hue; //changes the stroke according to the value of the hue
+    ctx.beginPath(); //allows the canvas manipulation
+    ctx.moveTo(lastX, lastY); //where does it start (0, 0)
+    ctx.lineTo(e.offsetX, e.offsetY); //where does it end (current mouse position)
+    ctx.stroke(); //allows the stroke
+    //lastX = e.offsetX (same thing as below) => updating the (0, 0) position to current mouse position
+    //lasty = e.offsetY
+    [lastX, lastY] = [e.offsetX, e.offsetY]; //we start from where the mouse is => but still the begining position is from 0 X/Y => then when you click off and go back it starts from where you ended and connects to the last position left => you're drawing a single line
+    hue++;
+
+    if(hue >= 360) { //of hie is higher or equal to 360 => reset back to 0
+      hue = 0;
+    }
+    console.log(hue)
+
+
+    if (ctx.lineWidth >= 100 || ctx.lineWidth <= 1) {
+      //if the lineWidth gets to 100 or higher then assign direction as FALSE => starts decrementing (--)
+      //if the lineWidth gets to 1 or lower then assign direction aslo as FALSE => changes back to TRUE and stars incrementing (++)
+      direction = !direction;
+    }
+
+    if (direction) {
+      ctx.lineWidth++; //if true => increment
+    } else {
+      ctx.lineWidth--; //if false => decrement
+    }
+  }
+
+  canvas.addEventListener('mousemove', draw) //when moving inside the canvas then run the draw function => doesnt draw because
+
+  canvas.addEventListener('mousedown', (e) => {
+    isDrawing = true; //when the mouse is down, isDrawing turns to true => draw(e) function will ask IF isDrawing is FALSE which it is not (TRUE) => evaluates the next code (not the if code) => starts drawing
+    [lastX, lastY] = [e.offsetX, e.offsetY]; //updates the (0, 0) so next time it doesnt start form (0, 0)
+  });
+  canvas.addEventListener('mouseup', () => isDrawing = false); //when the mouse is up, isDrawing turns to false => draw(e) function will ask IF isDrawing is FALSE which it is => evaluated the if code => return nothing
+  canvas.addEventListener('mouseout', () => isDrawing = false); // you can make a bug => when you hold the mouse down and go out of the browser window and let go and come back => still draws
+
+</script>
+
+<style>
+
+  html, body {
+   margin: 0;
+  }
+
+  canvas {
+    margin: 0;
+    border: 3px solid gray;
+  }
+</style>
+</body>
+</html>
