@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Speech Synthesis</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="voiceinator">
+
+      <h1>The Voiceinator 5000</h1>
+
+      <select name="voice" id="voices">
+        <option value="">Select A Voice</option>
+      </select>
+
+      <label for="rate">Rate:</label>
+      <input name="rate" type="range" min="0" max="3" value="1" step="0.1">
+
+      <label for="pitch">Pitch:</label>
+
+      <input name="pitch" type="range" min="0" max="2" step="0.1">
+      <textarea name="text">Hello! I love JavaScript 👍</textarea>
+      <button id="stop">Stop!</button>
+      <button id="speak">Speak</button>
+
+    </div>
+
+<script>
+  const msg = new SpeechSynthesisUtterance(); //what is the person going to say =>its going to contain infos like: how fast, the pitch, the voice, what will they say
+  let voices = [];
+  const voicesDropdown = document.querySelector('[name="voice"]');
+  const options = document.querySelectorAll('[type="range"], [name="text"]');
+  const speakButton = document.querySelector('#speak');
+  const stopButton = document.querySelector('#stop');
+  const context = document.querySelector('textarea');
+
+
+  msg.text = context.value;
+  //console.log(msg);
+
+  function populateVoices() {
+    voices = this.getVoices(); //get the voices from speechSynthesis
+    //console.log(voices);
+
+    //mapping the voices into option elements
+    const newVoices = voices
+      .map(voice =>
+        voice = `<option value="${voice.name}">${voice.name} (${voice.lang})</option>`)
+      .join('') //joining the array
+    //console.log(newVoices)
+
+    voicesDropdown.innerHTML = newVoices; //inserting the list into the select form
+  }
+
+  function setVoice() {
+    msg.voice = voices.find(voice => voice.name === this.value); //setting the voice => find the first voice form the voices list, that has a matching voice.name to the value of the clicked option
+    stop();
+  }
+
+  function stop() {
+    speechSynthesis.cancel();
+  }
+
+  function setOption() {
+    console.log(this.name, this.value);
+    msg[this.name] = this.value; //inputs name = pitch, rate => to its value
+  }
+
+  speechSynthesis.addEventListener('voiceschanged', populateVoices);
+  voicesDropdown.addEventListener('input', setVoice)
+  //speechSynthesis.speak(msg) //actuall action of the speaking
+  //console.log(speechSynthesis)
+  speakButton.addEventListener('click',() => speechSynthesis.speak(msg));
+  stopButton.addEventListener('click', stop);
+  options.forEach(option => option.addEventListener('change', setOption)); //selected all 3 inputs
+</script>
+
+</body>
+</html>

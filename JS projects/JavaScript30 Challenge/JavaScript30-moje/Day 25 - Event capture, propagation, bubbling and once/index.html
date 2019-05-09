@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Understanding JavaScript's Capture</title>
+</head>
+<body class="bod">
+
+  <div class="one">
+    <div class="two">
+      <div class="three">
+      </div>
+    </div>
+  </div>
+
+<style>
+  html {
+    box-sizing: border-box;
+  }
+
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  div {
+    width: 100%;
+    padding: 100px;
+  }
+
+  .one {
+    background: thistle;
+  }
+
+  .two {
+    background: mistyrose;
+  }
+
+  .three {
+    background: coral;
+  }
+</style>
+
+<button></button>
+<script>
+  const divs = document.querySelectorAll('div');
+
+  function logText(e) {
+    console.log(this.classList.value); //when you click one of the divs => it console.logs all the three => called bubbling => because the elements are nested on top of each other => opposite process of event delegation
+    //capture = finds the element you clicked on => is searches from the top of the DOM to the bottom (the clicked element)
+    //console.log(this);
+    e.stopPropagation(); //stop bubbling => will only console.log the one that is clicked on => stopPropagation + capture: true => if you click the 3rd one (middle one) => you will console.log the first one
+  }
+
+  //document.addEventListener('click', logText); //console logs the div or divs and also the whole document (html, head, body, style, script, etc....)
+
+  divs.forEach(div => {
+    div.addEventListener('mousemove', logText, {capture: true, once: true }) //capture: true = you will run the function when going down not up
+    //once: true = addEventListener will only work once
+  })
+</script>
+</body>
+</html>

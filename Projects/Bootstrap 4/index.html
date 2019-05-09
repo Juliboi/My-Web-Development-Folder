@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+
+  <!--MY CODE-->
+
+  <body>
+
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">Julian Xu</a>
+
+      <!--
+      navbar => for classifying a navbar, for containers
+      navbar-expand-lg => ?
+      navbar-dark => white color for the letter
+      bg-secondary => grey background
+      navbar-brand => for classifying logos
+      -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+      <!--
+       navbar-toggler => ?
+       type="button" => to specify the function
+       data-toggle="collapse" => ?
+       data-targer="navbarSupportedContent" => for connecting with the content (id)
+       navbar-toggler-icon => ?
+      -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item" >
+              <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle dropdown" href="#" id="navbarDropdown" data-toggle="dropdown" >Products</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Product 1</a>
+                <a class="dropdown-item" href="#">Product 2</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Product 3</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+
+            <!--
+            collapse => hides the content under the button
+            navbar-collapse => content collapses onto another line
+            navbarSupportedContent => is for connecting to the button function
+            navbar-nav => for classifying the navigation, usually for <ul>
+            mr-auto => pushes the content to the left side (margin right auto)
+            nav-item => for classifying the item, usually for <li>
+            nav-link => for classifying the link, usually for <a>
+            dropdown => classifying the dropdown
+            dropdown toggle => giving the Product an downwards arrow (dropdown)
+            navbarDropdown =>
+            data-toggle => for connecting with the Product anchor
+            dropdown-menu => for classifying the dropdown menu, usually a container
+            dropdown-item => for classifying the dropdown item, usually <a>
+            dropdown-divider => makes a line between something, usually a <div>
+          -->
+          </ul>
+        </div>
+      </nav>
+
+      <!--HERO UNIT-->
+
+      <div class="jumbotron">
+        <h1 class="display-4">Simple. Elegant. Awesome.</h1>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <hr class="my-4">
+        <p>
+          <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+        </p>
+      </div>
+
+      <!--CARDS-->
+
+      <div class="row">
+        <div class="col-sm-12 col-md-4 mb-4 my-md-0">
+          <div class="card">
+            <div class="card-body text-center">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick text to build a card</p>
+              <a href="#" class="card-link">Another link</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4 mb-4 my-md-0">
+          <div class="card">
+            <div class="card-body text-center">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick text to build a card</p>
+              <a href="#" class="card-link">Another link</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4 mb-4 my-md-0">
+          <div class="card">
+            <div class="card-body text-center">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick text to build a card</p>
+              <a href="#" class="card-link">Another link</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--ARTICLE TEXT-->
+
+      <div class="row mt-sm-4 mt-md-4">
+        <div class="col-sm-12 col-md-8 text-sm-center text-md-left">
+          <h3>An important heading</h3>
+          <p class="lead">A sort of important subheading can go here, which is larger and grey.</p>
+
+          <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</p>
+        </div>
+
+        <!--SECONDARY MENU (VERTICAL)-->
+
+        <div class="col-sm-12 col-md-4 text-sm-center text-md-left my-3 my-md-0 ">
+          <h3 class="mb-4">Secondary menu</h3>
+
+          <ul class="nav flex-column nav-pills">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Active</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+
+            <!--
+            nav => classifying a nav
+            flex-collumn => flex box function, makes it a collumn
+            nav-pills => adds the blue box/pill
+            active => makes the link brighter
+            disabled => makes the link less bright and unclickable
+            -->
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+</html>

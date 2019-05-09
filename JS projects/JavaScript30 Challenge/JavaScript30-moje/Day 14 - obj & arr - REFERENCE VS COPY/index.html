@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Reference VS Copy</title>
+</head>
+<body>
+
+  <script>
+    // start with strings, numbers and booleans
+      let age = 100;
+      let age2 = age;
+      console.log(age, age2); //100, 100
+      age = 200; //this will only change the variable 'age'
+      console.log(age, age2); //200, 100
+
+      let name = 'Juli';
+      let name2 = name;
+      console.log(name, name2); //Juli, Juli
+      name = 'Julian'; //this will only change the variable 'age'
+      console.log(name, name2); //Julian, Juli
+
+    // Let's say we have an array
+      const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
+
+    // and we want to make a copy of it.
+      const team = players; //doesnt actually work like that
+      console.log(players, team) // ['Wes', 'Sarah', 'Ryan', 'Poppy'],
+                                 // ['Wes', 'Sarah', 'Ryan', 'Poppy']
+
+    // You might think we can just do something like this:
+      //team[3] = 'Lux';
+      console.log(team);    // ['Wes', 'Sarah', 'Ryan', 'Lux'],
+      console.log(players); // ['Wes', 'Sarah', 'Ryan', 'Lux']  => NOT A COPY! => With Arrays it doesnt work like with Strings, Numbers and Booleans => It changes the origial Array!
+
+      // however what happens when we update that array?
+      // now here is the problem!
+      // oh no - we have edited the original array too!
+      // Why? It's because that is an array reference, not an array copy. They both point to the same array!
+
+    // So, how do we fix this? We take a COPY instead! (WE HAVE MANY POSSIBILITIES)
+      // one way
+        const team2 = players.slice(); //usually with splice() you select certain elements and save it as a copy (2, 4 = from the 2nd to the 3rd index => second parameter is always not inclucded) => if you dont pass anything it will jsut create a copy of that original Array!
+        team2[3] = 'Lux';
+        console.log(team2);   //['Wes', 'Sarah', 'Ryan', 'Lux']
+        console.log(players); //['Wes', 'Sarah', 'Ryan', 'Poppy'] => dont forget to delete the team[3] = 'Lux'; so that it works!
+
+      // or create a new array and concat the old one in
+        const team3 = [].concat(players);
+
+      // or use the new ES6 Spread
+        const team4 = [];
+        team3.push(...players);
+
+      // or we use Array.from() method
+        const team5 = Array.from(players)
+
+      // now when we update it, the original one isn't changed
+      // The same thing goes for objects, let's say we have a person object
+
+    // with Objects => same as Arrays
+    const person = {
+      name: 'Wes Bos',
+      age: 80
+    };
+
+      // and think we make a copy:
+        const captain = person;
+        captain.number = 99; //will also add this property to the original 'person' Array
+
+      // how do we take a copy instead?
+        const cap2 = Object.assign({}, person, {number: 99}); //{} most often start with a blank object => then pass in the wanted object (person) => and then
+        console.log(cap2);   //name: 'Wes Bos', age: 80, number: 99
+        console.log(person); //name: 'Wes Bos', age: 80 => remember to delete the const captain = person; + captain.number = 99;
+
+      // We will hopefully soon see the object ...spread  => in react its possible
+
+      // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+
+        const wes = {
+          name: 'Wes',
+          age: 100,
+          social: {
+            twitter: '@wesbos',
+            facebook: 'wesbos.developer'
+          }
+        };
+
+        const dev = Object.assign({}, wes);
+
+        dev.name = 'Dick';
+
+        console.log(wes); //same
+        console.log(dev); //name: Dick
+
+        dev.social.twitter = 'hey';
+
+        console.log(wes); //social: 'Dick' =>you can edit only one level deep
+        console.log(dev); //social: 'Dick'
+
+
+        //find a clone deep function or use this to edit deeper levels in the object:
+        //JSON.stringify = makes the object a string => JSON.parse = immidietaly turns the String back to a Object => makes a copy out of it
+        const dev2 = JSON.parse(JSON.stringify(wes));
+
+        const items =  [
+          {name: 'Bike', price: 100},
+          {name: 'TV', price: 200},
+          {name: 'Dick', price: 10},
+          {name: 'Yomum', price: 500},
+          {name: 'Yodad', price: 1000}
+        ]
+
+        const itemNames = items.map((item) => {
+          return item.price = 'dick'
+          return item.name = 'dick';
+        })
+
+        console.log(itemNames);
+
+
+  </script>
+
+</body>
+</html>

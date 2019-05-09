@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mouse Shadow</title>
+</head>
+<body>
+
+  <div class="hero">
+    <h1 contenteditable>🔥WOAH!</h1>
+  </div>
+
+  <style>
+    html {
+      color: black;
+      font-family: sans-serif;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: black;
+    }
+
+    h1 {
+      text-shadow: 10px 10px 0 rgba(0,0,0,1);
+      font-size: 100px;
+    }
+  </style>
+
+  <script>
+    const hero = document.querySelector('.hero')
+    const text = hero.querySelector('h1')
+
+    const walk = 30; //max pixels of how much to move => will be divided by 2
+
+    function shadowMove(e) {
+      const width = hero.offsetWidth;
+      const height = hero.offsetHeight;
+      //const {offsetWidth: width, offsetHeight: height} = hero; //same thing as above => destructuring = const {assigment: declaring a variable} = from which element
+
+      let {offsetX: x, offsetY: y} = e;
+
+      if (this !== e.target) {  //if hero doesnt equal to the event target (can be the hero or the h1 tag) => solution to the problem when you hover onto the children element (p) inside the hero (div) the x and y will gradually go to 0
+        x = x + e.target.offsetLeft; //add the distance from the left to the content + the new value of the offsetX/Y from the child element
+        y = y + e.target.offsetTop;
+      }
+      //console.log(x, y);
+
+      const xWalk = Math.round((x / width * walk) - (walk / 2)); //dont need to understand
+      const yWalk = Math.round((y / height * walk) - (walk / 2));
+
+      console.log(xWalk, yWalk);
+
+      text.style.textShadow = `${xWalk}px ${yWalk}px 0 red`;
+      //${xWalk}px ${yWalk}px 0 rgba(255,0,255,0.7),
+      //${xWalk * -1}px ${yWalk}px 0 rgba(0,255,255,0.7),
+      //${yWalk}px ${xWalk * -1}px 0 rgba(0,255,0,0.7),
+      //${yWalk * -1}px ${xWalk}px 0 rgba(0,0,255,0.7)
+    }
+
+
+    hero.addEventListener('mousemove', shadowMove);
+
+  </script>
+</body>
+</html>

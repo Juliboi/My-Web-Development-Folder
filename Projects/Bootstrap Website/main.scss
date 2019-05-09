@@ -1,0 +1,67 @@
+@import "node_modules/bootstrap/scss/bootstrap";
+
+//Custom stylesheet
+#introduction {
+  background: linear-gradient(rgba(100,181,246 ,1), rgba(0,0,0,0.8)), url('http://bit.ly/2fBj6OJ') 0% 0%/cover
+}
+
+.fill-viewport {
+  min-height: 100vh;      /*min-height?*/
+}
+
+.fill-80-viewport {
+  min-height: 80vh;
+}
+
+.fill-40-viewport {
+  min-height: 20vh;
+}
+
+.text-white-70 {
+  color: rgba(255,255,255,0.7);
+}
+
+.text-black-40 {
+  color: rgba(0,0,0,0.4);
+}
+
+.text-black-70 {
+   color: rgba(0,0,0,0.7)
+}
+
+@include media-breakpoint-up(md) {
+  .basis-md-50 {
+    flex-basis: 50%;
+  }
+}
+
+#info--3 {
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(100, 181, 246, 0.3)), to(rgba(0, 0, 0, 0.8))), url(http://bit.ly/2xMHeVk) 0% 0%/cover;
+    background: -webkit-linear-gradient(rgba(100, 181, 246, 0.3), rgba(0, 0, 0, 0.8)), url(http://bit.ly/2xMHeVk) 0% 0%/cover;
+    background: -o-linear-gradient(rgba(100, 181, 246, 0.3), rgba(0, 0, 0, 0.8)), url(http://bit.ly/2xMHeVk) 0% 0%/cover;
+    background: linear-gradient(rgba(100, 181, 246, 0.3), rgba(0, 0, 0, 0.8)), url(http://bit.ly/2xMHeVk) 0% 25%/cover;
+}
+
+.list-border-y li {
+  border-top: 1px solid
+}
+
+.list-border-y li:last-child {
+  border-bottom: 1px solid
+}
+
+.list-border-black-20 li,
+.list-border-black-20 li:last-child{
+  border-color: rgba(0,0,0,0.2)
+}
+
+.rowa {
+  margin-right: 0;
+  margin-left: 0;
+
+  & > [class^="col-"],
+  & > [class*=" col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}

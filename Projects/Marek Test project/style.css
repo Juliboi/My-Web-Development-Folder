@@ -1,0 +1,26 @@
+* {
+Margin: 0;
+Padding: 0;
+}
+
+Html, body {
+  Height: 100%;
+}
+
+.container {
+  Min-height: 100%;
+}
+
+.main {
+  Overflow: auto;
+  Padding-bottom: 100px;
+
+}
+
+.footer {
+  Background-color: #000;
+  Position: relative;
+  Height: 100px;
+  Margin-top: -100px;
+  Clear: both;
+}

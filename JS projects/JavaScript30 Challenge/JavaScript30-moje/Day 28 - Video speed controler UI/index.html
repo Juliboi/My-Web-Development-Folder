@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Video Speed Scrubber</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="wrapper">
+    <video class="flex" width="765" height="430" src="http://clips.vorwaerts-gmbh.de/VfE_html5.mp4" loop controls></video>
+    <div class="speed">
+      <div class="speed-bar">1×</div>
+    </div>
+  </div>
+
+<script>
+  const speed = document.querySelector('.speed-bar');
+  const bar = document.querySelector('.speed');
+  const video = document.querySelector('video');
+  let isDown = false;
+  //console.log(speed, bar, video)
+
+
+  function drag(e) {
+    e.preventDefault();
+    if(!isDown) return
+    console.log(123)
+    const y = e.pageY - this.offsetTop;  //the total height of the page - the offsetTop of the bar to the screen (0-410)
+    const percent = y / this.offsetHeight; //offsetHeight = the full height of the bar => (0-410) / 410 = 0-1 percent
+    const min = 0.4;
+    const max = 4;
+    const height = Math.round(percent * 100) + '%'; // 0-1% * 100 = the certain amount of percentage
+    speed.style.height = height;
+  //  console.log(e.offsetY / 50)
+    video.playbackRate = percent * (max - min) + min; //or y / 101
+    speed.textContent = video.playbackRate.toFixed(1) + 'x';
+
+    console.log(video.playbackRate)
+  }
+
+  function click(e) {
+    e.preventDefault();
+    const y = e.pageY - this.offsetTop;  //the total height of the page - the offsetTop of the bar to the screen (0-410)
+    const percent = y / this.offsetHeight; //offsetHeight = the full height of the bar => (0-410) / 410 = 0-1 percent
+    const min = 0.4;
+    const max = 4;
+    const height = Math.round(percent * 100) + '%'; // 0-1% * 100 = the certain amount of percentage
+    speed.style.height = height;
+  //  console.log(e.offsetY / 50)
+    video.playbackRate = percent * (max - min) + min; //or y / 101
+    speed.textContent = video.playbackRate.toFixed(1) + 'x';
+  }
+
+
+  bar.addEventListener('click', click);
+  bar.addEventListener('mousemove', drag);
+  bar.addEventListener('mousedown',() => isDown = true);
+  bar.addEventListener('mouseup', () => isDown = false);
+  bar.addEventListener('mouseenter', (e) => isDown = false)
+ </script>
+ </body>
+ </html>
