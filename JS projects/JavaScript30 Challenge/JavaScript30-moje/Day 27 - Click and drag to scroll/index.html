@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Click and Drag</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="items">
+    <div class="item item1">01</div>
+    <div class="item item2">02</div>
+    <div class="item item3">03</div>
+    <div class="item item4">04</div>
+    <div class="item item5">05</div>
+    <div class="item item6">06</div>
+    <div class="item item7">07</div>
+    <div class="item item8">08</div>
+    <div class="item item9">09</div>
+    <div class="item item10">10</div>
+    <div class="item item11">11</div>
+    <div class="item item12">12</div>
+    <div class="item item13">13</div>
+    <div class="item item14">14</div>
+    <div class="item item15">15</div>
+    <div class="item item16">16</div>
+    <div class="item item17">17</div>
+    <div class="item item18">18</div>
+    <div class="item item19">19</div>
+    <div class="item item20">20</div>
+    <div class="item item21">21</div>
+    <div class="item item22">22</div>
+    <div class="item item23">23</div>
+    <div class="item item24">24</div>
+    <div class="item item25">25</div>
+  </div>
+
+<script>
+  const slider = document.querySelector('.items');
+  let isDown = false; //flag variable
+  let startX; //where the X mouse is
+  let scrollLeft;
+
+
+  slider.addEventListener('mousedown', (e) => {
+    isDown = true;
+    slider.classList.add('active');
+    //console.log(e)
+    startX = e.pageX - slider.offsetLeft;  //when adding margin left or right => there will be a problem of adding the margin to the slider pageX
+    //console.log(startX);
+    scrollLeft = slider.scrollLeft;
+  });
+  slider.addEventListener('mouseleave', () => {
+    isDown = false;
+    slider.classList.remove('active');
+  });
+  slider.addEventListener('mouseup', (e) => {
+    isDown = false;
+    slider.classList.remove('active');
+  });
+  slider.addEventListener('mousemove', (e) => {
+    if(!isDown) return
+    let x = e.pageX - slider.offsetLeft; //same as startX but its updating the value as you move
+    e.preventDefault(); //prevent selecting/highlighting anything unwanted
+    //console.log(startX);
+    //console.log({x, startX});
+    const walk = (x - startX) * 2 //(startX = startpoint) - (x = x mouse value), by multiplying it will increase the walk distance
+    //console.log(walk);
+    slider.scrollLeft = scrollLeft - walk;
+
+  });
+</script>
+
+  </body>
+</html>
